@@ -1,94 +1,58 @@
-# 📊 电商广告点击行为分析项目
+# E-commerce Advertising Click Analysis
 
-```markdown
-## 项目亮点
-- 基于千万级淘宝广告点击数据进行分析
-- 使用 PostgreSQL + Python 完成多表关联与可视化分析
-- 从用户画像、广告策略、商品价格三个维度拆解 CTR
-- 输出可落地的精准投放优化建议
-## 📌 项目背景
-本项目基于淘宝广告点击数据，对用户行为特征与广告投放效果进行分析，旨在挖掘影响点击率（CTR）的关键因素，并为广告精准投放提供数据支持。
+> An end-to-end analysis of e-commerce advertising click behaviour, combining SQL and Python to identify practical CTR optimisation opportunities.
 
----
+## Project overview
 
-## 🛠 技术栈
-- Python（Pandas / Matplotlib / Seaborn）
-- PostgreSQL（SQL 数据分析）
+This project uses the Alibaba Tianchi advertising click-prediction dataset to examine factors associated with click-through rate (CTR). The analysis combines user attributes, advertising strategy, and product-price signals, turning exploratory findings into targeting and campaign recommendations.
+
+## Highlights
+
+- Worked with a large-scale public advertising-click dataset
+- Used PostgreSQL and Python for joins, exploration, and visualisation
+- Analysed CTR across user segments, ad campaigns, and price ranges
+- Produced business-facing recommendations rather than charts alone
+
+## Tech stack
+
+- Python: Pandas, Matplotlib, Seaborn
+- PostgreSQL
 - Jupyter Notebook
-- Git / GitHub（项目管理）
+- Git and GitHub
 
----
+## Data source
 
-## 📂 数据来源
-数据来自阿里天池公开数据集（广告点击预测数据），包含：
+Alibaba Tianchi public advertising click-prediction dataset, including:
 
-- 用户行为日志（raw_sample）
-- 广告信息（ad_feature）
-- 用户画像（user_profile）
+- User behaviour logs: `raw_sample`
+- Advertising metadata: `ad_feature`
+- User profiles: `user_profile`
 
----
+The original data is not included because of its size. Please obtain it from the original public source before reproducing the notebooks.
 
-## 🔍 分析流程
+## Analysis workflow
 
-### 1️⃣ 数据探索与质量检查
-- 检查缺失值、异常值、重复数据
-- 验证核心指标（CTR）合理性
+1. **Data exploration and quality checks** — assess nulls, anomalies, duplicates, and the validity of core metrics.
+2. **Overall CTR analysis** — calculate aggregate CTR, compare traffic placements, and inspect trends over time.
+3. **User-segment analysis** — explore CTR differences by age, gender, and consumption level.
+4. **Cross-dimensional analysis** — study age and consumption-level combinations while controlling for small samples.
+5. **Advertising analysis** — compare advertisers, campaigns, and product-price bands.
 
-### 2️⃣ CTR整体分析
-- 计算整体点击率（CTR ≈ 5.14%）
-- 分析不同流量位（pid）CTR差异
-- 分析CTR时间趋势变化
+## Key findings
 
-### 3️⃣ 用户画像分析
-- 分析年龄、性别、消费能力对CTR的影响
-- 识别高点击潜力用户群体
+- Overall CTR is approximately **5.14%**.
+- User age groups 6 and 1 have the highest observed CTR and are promising targeting segments.
+- CTR differs materially among advertisers and campaigns; the highest observed advertiser CTR exceeds 16%.
+- Higher-priced products tend to have lower CTR, suggesting a trade-off between price and click attraction.
 
-### 4️⃣ 多维交叉分析
-- 年龄 × 消费能力组合分析
-- 过滤小样本，提高结果可靠性
-- 构建用户点击行为特征画像
+## Recommendations
 
-### 5️⃣ 广告投放分析
-- 分析不同广告主（customer）CTR差异
-- 分析不同campaign效果
-- 分析商品价格对CTR的影响
+1. Prioritise high-potential user segments, while validating performance on out-of-sample data.
+2. Reuse patterns from strong campaigns and investigate underperforming ones.
+3. Use lower-priced products for acquisition, and pair higher-priced products with richer content and more precise targeting.
 
----
+## Repository structure
 
-## 📊 核心结论
-
-### 👤 用户侧
-- 年龄层 6 和 1 用户CTR最高，是高潜力人群
-- 高消费用户点击更理性，CTR相对较低
-- 缺失消费标签（NaN）用户仍具有较高点击价值
-
-### 📢 广告侧
-- 不同广告主CTR差异显著（最高达16%+）
-- 不同campaign效果差异明显，策略影响较大
-
-### 💰 商品侧
-- 商品价格与CTR呈负相关关系
-- 低价商品更容易吸引点击，高价商品点击率较低
-
----
-
-## 💡 业务建议
-
-1. **用户定向优化**
-   - 优先投放年龄层6和1用户
-   - 针对高消费用户优化广告内容而非增加曝光
-
-2. **广告策略优化**
-   - 复用高CTR广告主和campaign的成功经验
-   - 优化低CTR广告策略
-
-3. **商品策略优化**
-   - 低价商品用于引流
-   - 高价商品加强内容营销和精准投放
-
----
-
-## 📁 项目结构
 ```text
 ad_analysis_project/
 ├── notebooks/
@@ -101,17 +65,8 @@ ad_analysis_project/
 ├── sql/
 ├── README.md
 └── .gitignore
+```
 
----
+## Notes
 
-## ⚠️ 数据说明
-由于数据量较大，本仓库未包含原始数据文件。  
-数据来源：阿里天池公开数据集。
-
----
-
-## 🚀 项目亮点
-- 基于真实工业级数据（千万级）
-- SQL + Python 结合分析
-- 完整数据分析流程（数据 → 分析 → 结论 → 建议）
-- 具备业务导向思维（非纯技术分析）
+This is an exploratory analytics project based on a public dataset. Findings should be revalidated before applying them to a live advertising system.
